@@ -9,7 +9,7 @@ class PdfController {
     try {
       const dd = new PDF(req.body);
 
-      const pdfDoc = pdfMake.createPdf(dd.SellPdf());
+      const pdfDoc = pdfMake.createPdf(dd.pdf);
       pdfDoc.getBase64((data) => {
         res.writeHead(200,
           {
