@@ -23,7 +23,7 @@ class PdfController {
       return null;
     } catch (e) {
       return res.json([{
-        error: 'unexpected error',
+        error: e,
       }]);
     }
   }
