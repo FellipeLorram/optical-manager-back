@@ -22,7 +22,6 @@ class PdfController {
       });
       return null;
     } catch (e) {
-      console.log(e);
       return res.json([{
         error: 'unexpected error',
       }]);

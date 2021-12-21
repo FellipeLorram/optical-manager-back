@@ -5,5 +5,6 @@ var _loginRequired = require('../Middlewares/loginRequired'); var _loginRequired
 const router = new (0, _express.Router)();
 
 router.post('/', _loginRequired2.default, _PdfController2.default.index);
+router.get('/', _loginRequired2.default, _PdfController2.default.index);
 
 exports. default = router;
