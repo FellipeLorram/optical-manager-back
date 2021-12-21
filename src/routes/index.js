@@ -10,4 +10,3 @@ export { default as levelRoute } from './levelRoute';
 export { default as framesRoutes } from './framesRoutes';
 export { default as lensRoutes } from './lensRoutes';
 export { default as paymentRoutes } from './paymentRoutes';
-export { default as pdfRoutes } from './pdfRoutes';

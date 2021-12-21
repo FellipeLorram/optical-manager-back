@@ -16,7 +16,6 @@ var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
 
 
 
-
 var _routes = require('./routes');
 
 require('dotenv').config();
@@ -76,7 +75,6 @@ class App {
     this.app.use('/clients/', _routes.examsRoutes);
     this.app.use('/clients/', _routes.concertsRoutes);
     this.app.use('/clients/payments/', _routes.paymentRoutes);
-    this.app.use('/pdf/', _routes.pdfRoutes);
   }
 }
 

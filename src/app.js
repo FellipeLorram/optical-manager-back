@@ -12,7 +12,6 @@ import {
   lensRoutes,
   levelRoute,
   paymentRoutes,
-  pdfRoutes,
   sellersRoutes,
   sellsRoutes,
   tokenRoutes,
@@ -76,7 +75,6 @@ class App {
     this.app.use('/clients/', examsRoutes);
     this.app.use('/clients/', concertsRoutes);
     this.app.use('/clients/payments/', paymentRoutes);
-    this.app.use('/pdf/', pdfRoutes);
   }
 }
 

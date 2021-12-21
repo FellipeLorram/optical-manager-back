@@ -10,4 +10,3 @@ var _levelRoute = require('./levelRoute'); _createNamedExportFrom(_levelRoute, '
 var _framesRoutes = require('./framesRoutes'); _createNamedExportFrom(_framesRoutes, 'framesRoutes', 'default');
 var _lensRoutes = require('./lensRoutes'); _createNamedExportFrom(_lensRoutes, 'lensRoutes', 'default');
 var _paymentRoutes = require('./paymentRoutes'); _createNamedExportFrom(_paymentRoutes, 'paymentRoutes', 'default');
-var _pdfRoutes = require('./pdfRoutes'); _createNamedExportFrom(_pdfRoutes, 'pdfRoutes', 'default');
