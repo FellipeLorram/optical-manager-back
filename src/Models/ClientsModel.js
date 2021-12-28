@@ -31,8 +31,8 @@ export default class Client {
         clients: this.body,
       },
     });
-    const t = await Client.index(userId);
-    this.client = t.pop();
+    const newClient = await Client.index(userId);
+    this.client = newClient.pop();
   }
 
   static async patchInline(userId, clientId, value) {

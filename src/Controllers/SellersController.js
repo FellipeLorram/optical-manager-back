@@ -4,7 +4,7 @@ class SellersController {
   async index(req, res) {
     try {
       const sellers = await Seller.index(req.userId);
-      return res.json(sellers[0]);
+      return res.json(sellers);
     } catch (e) {
       return res.json([{
         error: 'unexpected error',
@@ -32,7 +32,7 @@ class SellersController {
       if (newSeller.errors.length > 0) return res.json({
         errors: newSeller.errors,
       });
-      return res.json(newSeller.body);
+      return res.json(newSeller.seller);
     } catch (e) {
       console.log(e);
       return res.json([{

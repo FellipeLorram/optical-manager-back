@@ -8,7 +8,11 @@ export default class Seller {
   }
 
   static async index(id) {
-    return await UserModel.find({ _id: id }, { sellers: 1, _id: 0 }).sort({ CriadoEm: -1 });
+    const sellers = await UserModel
+      .find({ _id: id }, { sellers: 1, _id: 0 })
+      .sort({ CriadoEm: -1 });
+
+    return sellers[0].sellers;
   }
 
   static async sellersNames(id) {
@@ -29,11 +33,13 @@ export default class Seller {
 
   async register(userId) {
     if (this.errors.length > 0) return;
-    this.seller = await UserModel.findByIdAndUpdate({ _id: userId }, {
+    await UserModel.findByIdAndUpdate({ _id: userId }, {
       $push: {
         sellers: this.body,
       },
     });
+    const newSeller = await Seller.index(userId);
+    this.seller = newSeller.pop();
   }
 
   async findAndUpdate(userId, sellerId) {
