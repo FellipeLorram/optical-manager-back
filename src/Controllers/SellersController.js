@@ -16,7 +16,7 @@ class SellersController {
     try {
       const seller = await Seller.find(req.userId, req.params.id);
       if (!seller) return res.json(null);
-      return res.json(seller.sellers);
+      return res.json(seller.sellers[0]);
     } catch (e) {
       console.log(e);
       return res.json([{
