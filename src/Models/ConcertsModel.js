@@ -4,7 +4,7 @@ export default class Concerts {
   constructor(body) {
     this.body = body;
     this.errors = [];
-    this.sell = null;
+    this.repair = null;
   }
 
   static async index(userId, clientId) {
@@ -39,11 +39,13 @@ export default class Concerts {
 
   async register(userId, clientId) {
     if (this.errors.length > 0) return;
-    this.note = await UserModel.updateOne({ _id: userId, 'clients._id': clientId }, {
+    await UserModel.updateOne({ _id: userId, 'clients._id': clientId }, {
       $push: {
         'clients.$.concerts': this.body,
       },
     });
+    const repairs = await Concerts.index(userId, clientId);
+    this.repair = repairs.pop();
   }
 
   static async delete(userId, clientId, concertId) {
@@ -58,8 +60,9 @@ export default class Concerts {
   }
 
   static async find(userId, clientId, concertId) {
-    const exams = await UserModel.findOne({ _id: userId, 'clients._id': clientId }, { 'clients.$': 1, _id: 0 });
-    return exams.clients[0].concerts.filter((exam) => exam._id.toString() === concertId);
+    const repairs = await UserModel.findOne({ _id: userId, 'clients._id': clientId }, { 'clients.$': 1, _id: 0 });
+    const repair = repairs.clients[0].concerts.filter((exam) => exam._id.toString() === concertId);
+    return repair[0];
   }
 
   async findAndUpdate(userId, clientId, concertId) {

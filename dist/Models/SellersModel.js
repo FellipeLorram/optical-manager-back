@@ -8,7 +8,11 @@
   }
 
   static async index(id) {
-    return await _Schemma2.default.find({ _id: id }, { sellers: 1, _id: 0 }).sort({ CriadoEm: -1 });
+    const sellers = await _Schemma2.default
+      .find({ _id: id }, { sellers: 1, _id: 0 })
+      .sort({ CriadoEm: -1 });
+
+    return sellers[0].sellers;
   }
 
   static async sellersNames(id) {
@@ -29,11 +33,13 @@
 
   async register(userId) {
     if (this.errors.length > 0) return;
-    this.seller = await _Schemma2.default.findByIdAndUpdate({ _id: userId }, {
+    await _Schemma2.default.findByIdAndUpdate({ _id: userId }, {
       $push: {
         sellers: this.body,
       },
     });
+    const newSeller = await Seller.index(userId);
+    this.seller = newSeller.pop();
   }
 
   async findAndUpdate(userId, sellerId) {

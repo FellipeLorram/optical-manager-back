@@ -6,6 +6,7 @@ class ConcertsController {
       const clientsConcerts = await _ConcertsModel2.default.index(req.userId, req.params.id);
       return res.json(clientsConcerts);
     } catch (e) {
+      console.log(e);
       return res.json([{
         error: 'unexpected error',
       }]);
@@ -43,7 +44,7 @@ class ConcertsController {
       if (newConcert.errors.length > 0) return res.json({
         errors: newConcert.errors,
       });
-      return res.json(newConcert.body);
+      return res.json(newConcert.repair);
     } catch (e) {
       console.log(e);
       return res.json([{

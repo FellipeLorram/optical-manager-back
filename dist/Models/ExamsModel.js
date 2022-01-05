@@ -53,7 +53,7 @@
 
   async register(userId, clientId) {
     if (this.errors.length > 0) return;
-    this.note = await _Schemma2.default.updateOne({ _id: userId, 'clients._id': clientId }, {
+    this.exam = await _Schemma2.default.updateOne({ _id: userId, 'clients._id': clientId }, {
       $push: {
         'clients.$.exams': this.body,
       },

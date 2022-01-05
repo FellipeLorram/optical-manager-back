@@ -53,7 +53,7 @@ export default class Exams {
 
   async register(userId, clientId) {
     if (this.errors.length > 0) return;
-    this.note = await UserModel.updateOne({ _id: userId, 'clients._id': clientId }, {
+    this.exam = await UserModel.updateOne({ _id: userId, 'clients._id': clientId }, {
       $push: {
         'clients.$.exams': this.body,
       },
