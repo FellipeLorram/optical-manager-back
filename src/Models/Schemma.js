@@ -83,9 +83,9 @@ const SellsSchemma = new mongoose.Schema({
 
 const ConcertsSchemma = new mongoose.Schema({
   tipo: { type: String, required: false, default: '' },
-  valor: { type: String, required: false, default: '' },
-  pago: { type: String, required: false, default: '' },
-  entregue: { type: String, required: false, default: '' },
+  valor: { type: String, required: false, default: false },
+  pago: { type: Boolean, required: false, default: false },
+  entregue: { type: Boolean, required: false, default: '' },
   CriadoEm: { type: Date, default: Date.now },
 });
 
